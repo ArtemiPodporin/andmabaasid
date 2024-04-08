@@ -7,3 +7,5 @@ kirjed -
 väljad -
 andmed -
 väärtused -
+----
+QUERY - ZAPROS - päring
