@@ -1,0 +1,9 @@
+andmebaas -
+andmebaasid haldussüsteem -
+tabel -
+rida -
+veerg -
+kirjed -
+väljad -
+andmed -
+väärtused -
