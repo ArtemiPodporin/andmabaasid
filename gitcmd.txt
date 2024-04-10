@@ -1,0 +1,3 @@
+C:\Users\opilane\Desktop>git config --global user.mane "Artemi Podporin"
+
+C:\Users\opilane\Desktop>git config --global user.email "artemipodporin@gmail.com"
