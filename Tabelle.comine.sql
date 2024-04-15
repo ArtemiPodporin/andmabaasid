@@ -31,66 +31,101 @@ SELECT * FROM opilane;
 
  create table RYHM(
  ryhmid int primary key identity(1,1),
- ryhmnimetus varchar(20) UNIQUE,
- osakond char(3));
- SELECT * FROM RYHM;
- INSERT INTO RYHM(RYHMNIMETUS, osakond)
- VALUES ('LOGITpv22','it');
+SQL SERVER MANAGER STUDIO
 
- SELECT * FROM RYHM;
- select * from opilane;
- --FOREING KEY --->pk TEISES TABELIS
- ALTER TABLE opilane ADD ryhmid INT
+--ab loomine
 
- --tabeli opilane uuendamine
- UPDATE opilane set ryhmid=2;
+CREATE DATABASE KonjajevLOGITpv22;
 
- --Fk lisamine opilane tablelisse
- Alter table opilane 
- add foreign key (ryhmid) references RYHM(ryhmid)
+USE KonjajevLOGITpv22;
 
- insert into opilane(
- eesnimi, perenimi, isikukood, aadress, sisseastumis_kp, ryhmid)
- VALUES
- ('TEST', 'TEST', '50904020223', 'TALLINN', '2023-08-26', 1);
- SELECT * FROM opilane;
+--tabeli loomine
+CREATE TABLE opilane(
+id int Primary Key identity(1,1),
+eesnimi varchar(20),
+perenimi varchar(25) not null,
+isikukood char(11) unique,
+address TEXT,
+sisseastumis_kp date
+);
 
---table ryhmajuhataja
-create table ryhmajuhataja(
-tyhmaid int primary key identity(1,1),
+--primary key - primaarne võti mis annab unikaalsus
+--identity(1,1) - määrab igaühine oma numbri
+SELECT * FROM opilane;
+
+--andmete lisamine
+INSERT INTO opilane(eesnimi,perenimi,isikukood,address,sisseastumis_kp, ryhmId)
+VALUES(
+'Test', 'Test', '6784', 'Tallinn', '2023-08-16', 1);
+SELECT * FROM opilane;
+
+
+--tabeli Ryhm loomine
+CREATE TABLE ryhm(
+ryhmId int Primary Key identity(1,1),
+ryhmNimetus varchar(20) UNIQUE,
+osakond char (3));
+SELECT	* FROM	ryhm;
+
+INSERT INTO ryhm (ryhmNimetus,osakond)
+VALUES('LOGITpv24', 'IT');
+SELECT	* FROM	ryhm;
+SELECT	* FROM	opilane;
+
+--FOREIGN KEY -->PK teises tabelis
+ALTER TABLE opilane ADD ryhmId int
+
+--tabeli opilane uuendamine
+Update opilane SET ryhmId=2
+
+--FK lisamine opilane tabelisse
+ALTER TABLE opilane 
+ADD FOREIGN KEY (ryhmId) REFERENCES ryhm(ryhmId);
+
+--tabeli ryhmajuhataja loomine
+CREATE TABLE ryhmajuhataja(
+ryhmajuhatajaId int Primary Key identity(1,1),
 eesnimi varchar(20),
 perenimi varchar(25),
-telefon varchar(13));
+tel varchar(15)
+);
+SELECT	* FROM	ryhmajuhataja;
 
-insert into ryhmajuhataja(eesnimi, perenimi, telefon)
-values ('Jekaterina', 'Rätsep', '123456')
-select * from ryhmajuhataja;
-select * from ryhm;
+INSERT INTO ryhmajuhataja (eesnimi,perenimi,tel)
+VALUES('Nikita', 'konjajev','3124124');
+SELECT	* FROM	ryhm;
+SELECT	* FROM	ryhmajuhataja;
 
-ALTER TABLE ryhm ADD juhatajaID INT
-UPDATE ryhm set juhatajaID=1;
- Alter table ryhm
- add foreign key (juhatajaID) references ryhmajuhataja(juhatajaID)
+--FOREIGN KEY -->PK teises tabelis
+ALTER TABLE ryhm ADD ryhmajuhatajaId int
+ALTER TABLE ryhm DROP COLUMN ryhmajuhataja
 
-  INSERT INTO RYHM(RYHMNIMETUS,osakond, juhatajaID)
- VALUES ('LOGITpv21','it', 1);
+--tabeli opilane uuendamine
+Update ryhm SET ryhmajuhatajaId=1
+
+--FK lisamine opilane tabelisse
+ALTER TABLE ryhm 
+ADD FOREIGN KEY (ryhmajuhatajaId) REFERENCES ryhmajuhataja(ryhmajuhatajaId);
+
+--tabeli hinnang loomine
+CREATE TABLE hinnang(
+hinnangId int Primary Key identity(1,1),
+kuupaev date,
+opilaneId int,
+ryhmajuhatajaId int,
+hinnang varchar(25)
+);
+SELECT	* FROM	hinnang;
+
+INSERT INTO hinnang (kuupaev, opilaneId, ryhmajuhatajaId, hinnang)
+VALUES('2023-08-16', '1', '1', 'hasti');
+
+SELECT	* FROM	hinnang;
+SELECT	* FROM	opilane;
+SELECT	* FROM	ryhmajuhataja;
 
 
- ---hinnang
- create table hinnang(
-hinnangID int primary key identity(1,1),
-kuupaev date ,
-opilaneID varchar,
-ryhmajuhataja varchar,
-hinnang varchar(25));
 
-select * from hinnang;
-
-  INSERT INTO hinnang(kuupaev, opilaneID, ryhmajuhataja, hinnang ) 
- VALUES ('2023-9-10','1', '1', 'hästi');
-
- select * from hinnang;
- select * from opilane;
- select * from ryhmajuhataja;
-
-ALTER TABLE hinnang ADD ryhmajuhataja INT;
+--FOREIGN KEY -->PK teises tabelis
+ALTER TABLE hinnang ADD FOREIGN KEY (ryhmajuhatajaId) REFERENCES ryhmajuhataja(ryhmajuhatajaId);
+ALTER TABLE hinnang ADD FOREIGN KEY (opilaneId) REFERENCES opilane(opilaneId);
