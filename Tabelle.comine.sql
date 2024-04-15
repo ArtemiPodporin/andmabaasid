@@ -1,9 +1,9 @@
 ﻿SQL SERVER MANAGEMENT STUUDIO
 
 --ab loomine
-CREATE Database ArtemiPodporinLOGITpv22;
+CREATE Database PodporinLOGITpv22;
 
-USE ArtemiPodporinLOGITpv22;
+USE PodporinLOGITpv22;
 --TABELI LOOMINE
 CREATE TABLE OPILANE(
 id int Primary Key identity(1,1),
@@ -35,9 +35,9 @@ SQL SERVER MANAGER STUDIO
 
 --ab loomine
 
-CREATE DATABASE KonjajevLOGITpv22;
+CREATE DATABASE PodporinLOGITpv22;
 
-USE KonjajevLOGITpv22;
+USE PodporinLOGITpv22;
 
 --tabeli loomine
 CREATE TABLE opilane(
