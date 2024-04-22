@@ -72,3 +72,16 @@ end;
 --käivitamine
 exec otsing1Taht 'F';
 
+
+--protseduur mis kustutab sissetatus id gärgi
+create Procedure kustutaFilm
+@id int
+as
+begin
+select  * from film;
+delete from film where filmId=@id;
+select * from film;
+end;
+
+exec kustutaFilm 42;
+
