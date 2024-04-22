@@ -1,0 +1,73 @@
+create table kool(
+KooliID int,
+Kooli_nimi varchar (25),
+ehitamise_kuupaev date)
+select * from kool;
+
+
+
+insert into kool (KooliID, Kooli_nimi, ehitamise_kuupaev) values (1, 'Penelopa Ashlee', '2024-01-13');
+insert into kool (KooliID, Kooli_nimi, ehitamise_kuupaev) values (2, 'Lisa Golda', '2024-01-02');
+insert into kool (KooliID, Kooli_nimi, ehitamise_kuupaev) values (3, 'Antonino Heatherington', '2023-07-31');
+insert into kool (KooliID, Kooli_nimi, ehitamise_kuupaev) values (4, 'Gayler Chipping', '2024-01-26');
+insert into kool (KooliID, Kooli_nimi, ehitamise_kuupaev) values (5, 'Toiboid Tullett', '2023-12-19');
+insert into kool (KooliID, Kooli_nimi, ehitamise_kuupaev) values (6, 'Kellen Volker', '2023-04-22');
+insert into kool (KooliID, Kooli_nimi, ehitamise_kuupaev) values (7, 'Spence Carling', '2023-11-07');
+insert into kool (KooliID, Kooli_nimi, ehitamise_kuupaev) values (8, 'Darrick Di Filippo', '2023-12-13');
+insert into kool (KooliID, Kooli_nimi, ehitamise_kuupaev) values (9, 'Osbourne Roblin', '2023-12-23');
+insert into kool (KooliID, Kooli_nimi, ehitamise_kuupaev) values (10, 'Aguistin Argont', '2023-09-22');
+insert into kool (KooliID, Kooli_nimi, ehitamise_kuupaev) values (11, 'Wendye Duplain', '2023-08-06');
+insert into kool (KooliID, Kooli_nimi, ehitamise_kuupaev) values (12, 'Adham Restill', '2023-05-28');
+insert into kool (KooliID, Kooli_nimi, ehitamise_kuupaev) values (13, 'Donelle Yewman', '2024-03-10');
+insert into kool (KooliID, Kooli_nimi, ehitamise_kuupaev) values (14, 'Andreas Brandts', '2024-03-20');
+insert into kool (KooliID, Kooli_nimi, ehitamise_kuupaev) values (15, 'Gun Tarborn', '2023-12-03');
+insert into kool (KooliID, Kooli_nimi, ehitamise_kuupaev) values (16, 'Danita Drepp', '2023-12-17');
+insert into kool (KooliID, Kooli_nimi, ehitamise_kuupaev) values (17, 'Lanny Andri', '2023-07-28');
+insert into kool (KooliID, Kooli_nimi, ehitamise_kuupaev) values (18, 'Zolly Daber', '2023-11-18');
+insert into kool (KooliID, Kooli_nimi, ehitamise_kuupaev) values (19, 'Anetta Gilbert', '2023-11-07');
+insert into kool (KooliID, Kooli_nimi, ehitamise_kuupaev) values (20, 'Fleming Tume', '2023-06-17');
+insert into kool (KooliID, Kooli_nimi, ehitamise_kuupaev) values (21, 'Darsey Wickman', '2023-04-24');
+insert into kool (KooliID, Kooli_nimi, ehitamise_kuupaev) values (22, 'Kele Karchowski', '2023-11-16');
+insert into kool (KooliID, Kooli_nimi, ehitamise_kuupaev) values (23, 'Hanny Crysell', '2023-12-08');
+insert into kool (KooliID, Kooli_nimi, ehitamise_kuupaev) values (24, 'Neile De Blasi', '2024-04-20');
+insert into kool (KooliID, Kooli_nimi, ehitamise_kuupaev) values (25, 'Ingrid Bliven', '2023-12-18');
+insert into kool (KooliID, Kooli_nimi, ehitamise_kuupaev) values (26, 'Gisele Keller', '2024-04-08');
+insert into kool (KooliID, Kooli_nimi, ehitamise_kuupaev) values (27, 'Winnah Moultrie', '2024-01-17');
+insert into kool (KooliID, Kooli_nimi, ehitamise_kuupaev) values (28, 'Willard Chetwynd', '2023-11-21');
+insert into kool (KooliID, Kooli_nimi, ehitamise_kuupaev) values (29, 'Sharla Daybell', '2023-11-24');
+insert into kool (KooliID, Kooli_nimi, ehitamise_kuupaev) values (30, 'Helene Shepherdson', '2023-12-08');
+
+
+
+
+--lisa koole
+
+CREATE PROCEDURE LisaKoole
+@nimi VARCHAR(25),
+@ID INT,
+@kuupaev DATE
+AS
+BEGIN
+    INSERT INTO kool (Kooli_nimi, KooliID, ehitamise_kuupaev)
+    VALUES (@nimi, @ID, @kuupaev);
+END;
+exec LisaKoole 'TTRK', 1, '2013-05-22';
+
+--protseduur koolide otsing
+
+CREATE PROCEDURE OtsiKoole (
+  @otsitavNimi VARCHAR(25))
+AS
+BEGIN
+    SELECT * FROM kool WHERE Kooli_nimi LIKE '%' + @otsitavNimi + '%';
+END;
+exec OtsiKoole 'TTRK';
+
+--Leia koolide arv
+
+CREATE PROCEDURE LeiaKoolideArv
+AS
+BEGIN
+    SELECT COUNT(*) AS 'Koolide arv' FROM kool;
+END;
+exec LeiaKoolideArv;
