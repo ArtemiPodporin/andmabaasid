@@ -85,3 +85,11 @@ end;
 
 exec kustutaFilm 42;
 
+--procedur, mis loed filmide arv kokku
+
+create Procedure FilmideArv
+as
+select count(*) as 'filmide Arv'from film;
+
+exec FilmideArv;
+
