@@ -69,4 +69,6 @@ begin
 	select * from film
 	where filmNimetus LIKE concat (@taht, '%');
 end;
+--käivitamine
+exec otsing1Taht 'F';
 
