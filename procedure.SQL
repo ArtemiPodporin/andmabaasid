@@ -58,3 +58,15 @@ insert into preview (filmNimetus, last_name, rezisoor, v_aasta) values ('OH in O
 insert into preview (filmNimetus, last_name, rezisoor, v_aasta) values ('Train of Shadows (Tren de sombras)', 16, 'Arvin le Keux', 2010);
 insert into preview (filmNimetus, last_name, rezisoor, v_aasta) values ('Nobody Owns Me (Mig äger ingen)', 32, 'Orland Benian', 2011);
 insert into preview (filmNimetus, last_name, rezisoor, v_aasta) values ('Intact (Intacto)', 2, 'Filberte Enriquez', 2006);
+
+
+select * from film;
+--filmiNimetus otsing esimese täha järgi
+create Procedure otsing1Taht
+@taht char(1)
+as
+begin
+	select * from film
+	where filmNimetus LIKE concat (@taht, '%');
+end;
+
