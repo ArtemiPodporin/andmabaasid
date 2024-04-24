@@ -1,1 +1,6 @@
-
+create table filmm (
+    film int PRIMARY key AUTO_INCREMENT,
+	filmNimetus VARCHAR(50),
+	kestvus INT,
+	rezisoor VARCHAR(50),
+	v_aasta int);
