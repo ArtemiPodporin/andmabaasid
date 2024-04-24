@@ -14,3 +14,13 @@ CREATE PROCEDURE `otsing1taht`(IN `taht` CHAR(1)) NOT DETERMINISTIC CONTAINS SQL
 end;
 --protseduuri käivitamine
 call otsing1taht ('C');
+
+--filmi kustsustamine
+CREATE PROCEDURE `otsing1taht`(IN `taht` CHAR(1)) NOT DETERMINISTIC CONTAINS SQL SQL SECURITY DEFINER 
+
+begin
+select * from film;
+delete from film where filmid=@id;
+select * from film;
+end;
+
