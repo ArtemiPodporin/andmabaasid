@@ -12,3 +12,5 @@ CREATE PROCEDURE `otsing1taht`(IN `taht` CHAR(1)) NOT DETERMINISTIC CONTAINS SQL
 	select * from film
 	where filmnimetus like concat(taht,'%');
 end;
+--protseduuri käivitamine
+call otsing1taht ('C');
