@@ -1,6 +1,14 @@
-create table filmm (
-    film int PRIMARY key AUTO_INCREMENT,
-	filmNimetus VARCHAR(50),
-	kestvus INT,
-	rezisoor VARCHAR(50),
-	v_aasta int);
+
+create table film(
+filmid int primary key AUTO_INCREMENT,
+filmnimetus varchar(50),
+kestvus int,
+rezisoor varchar(50),
+v_aasta int);
+
+CREATE PROCEDURE `otsing1taht`(IN `taht` CHAR(1)) NOT DETERMINISTIC CONTAINS SQL SQL SECURITY DEFINER 
+  
+  begin
+	select * from film
+	where filmnimetus like concat(taht,'%');
+end;
