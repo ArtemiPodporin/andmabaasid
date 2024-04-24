@@ -24,3 +24,6 @@ delete from film where filmid=@id;
 select * from film;
 end;
 
+--ne robit
+call kustutaFilm (15);
+
