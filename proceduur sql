@@ -27,3 +27,10 @@ end;
 --ne robit
 call kustutaFilm (15);
 
+
+--proceduur mis täidab tabeli film
+begin
+insert into film (filmnimetus, kestvus, rezisoor, v_aasta)
+values (uusfilm, kestvus, rezisoor, aasta);
+select * from film;
+end;
