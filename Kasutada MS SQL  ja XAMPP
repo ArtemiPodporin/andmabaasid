@@ -1,5 +1,5 @@
-CREATE Database Podporin;
-use Podporin;
+CREATE Database pood;
+use Pood;
 
 CREATE TABLE brand (
     id INT PRIMARY KEY identity(1,1),
@@ -7,6 +7,19 @@ CREATE TABLE brand (
     roivaste_tyyp VARCHAR(255),
     hind DECIMAL(10, 2)
 );
+
+
+insert into brand (id, brand, roivaste_tyyp, hind) values (1, 'Nike', 'Sneakers', '18,4');
+insert into brand (id, brand, roivaste_tyyp, hind) values (2, 'Adidas', 'T-särk', '9,5');
+insert into brand (id, brand, roivaste_tyyp, hind) values (3, 'Levi''s', 'Fliis', '18,0');
+insert into brand (id, brand, roivaste_tyyp, hind) values (4, 'Gucci', 'Kleit', '54,7');
+insert into brand (id, brand, roivaste_tyyp, hind) values (5, 'Calvin Klein', 'Pluus', '34,33');
+insert into brand (id, brand, roivaste_tyyp, hind) values (6, 'H&M', 'Püksid', '9,16');
+insert into brand (id, brand, roivaste_tyyp, hind) values (7, 'Zara', 'Jakid', '65,72');
+insert into brand (id, brand, roivaste_tyyp, hind) values (8, 'Puma', 'Kampsun', '50,07');
+insert into brand (id, brand, roivaste_tyyp, hind) values (9, 'Tommy Hilfiger', 'Särk', '41');
+insert into brand (id, brand, roivaste_tyyp, hind) values (10, 'Under Armour', 'Fliis', '27,93');
+
 
 
 -- Lisame kasutaja myyja
