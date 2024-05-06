@@ -1,1 +1,21 @@
+CREATE Database Podporin;
+use Podporin;
 
+CREATE TABLE brand (
+    id INT PRIMARY KEY identity(1,1),
+    brand VARCHAR(255),
+    roivaste_tyyp VARCHAR(255),
+    hind DECIMAL(10, 2)
+);
+
+
+-- Lisame kasutaja myyja
+CREATE USER 'myyja'@'localhost' IDENTIFIED BY '123456';
+
+
+-- Andmebaasi poodi antakse kasutajale myyja õigused ALTER TABLE ja INSERT INTO
+GRANT ALTER, INSERT ON Pood.brand TO 'myyja'@'localhost';
+
+
+-- Kasutajale myyja keelame CREATE TABLE õiguse
+REVOKE CREATE TABLE ON Pood.* FROM 'myyja'@'localhost';
